@@ -4,11 +4,14 @@ import {useForm} from 'react-hook-form';
 import Button from "@/app/components/button/button-component";
 import FormGroup from "@/app/components/form-group/form-group-component";
 import ErrorMessage from "@/app/components/error-message/error-message-component";
+import {useRouter} from "next/navigation";
 // Outros imports
 
 const AuthPage: React.FC = () => {
     const {register, handleSubmit, formState: {errors}} = useForm();
     const [generalError, setGeneralError] = useState("");
+    const router = useRouter();
+
     const onSubmit = (data: any) => {
 
         console.log(data)
@@ -22,6 +25,10 @@ const AuthPage: React.FC = () => {
             console.log("Usuário autenticado:", data);
             // Prossiga com a autenticação
         }
+    };
+
+    const handleRecoverClick = () => {
+        router.push('/auth/recover');
     };
 
     useEffect(() => {
@@ -47,7 +54,7 @@ const AuthPage: React.FC = () => {
                 {generalError && <ErrorMessage message={generalError}/>}
                 <Button type="submit">Login</Button>
                 <span className="text-[#a7b1bb] text-[12px] mt-1">Esqueceu a sua senha? </span><span
-                className="cursor-pointer text-[#ff1553] text-[12px] mt-1">Recuperar</span>
+                className="cursor-pointer text-[#ff1553] text-[12px] mt-1" onClick={handleRecoverClick}>Recuperar</span>
             </form>
         </div>
     );

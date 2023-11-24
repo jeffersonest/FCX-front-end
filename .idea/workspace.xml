@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c9fb426-fa46-4639-92e1-f62d2510bdd9" name="Changes" comment="" />
+    <list default="true" id="5c9fb426-fa46-4639-92e1-f62d2510bdd9" name="Changes" comment="Initial Commit:&#10;&#10;- Added Login page.&#10;- Added Componenets:&#10; - FormGroup&#10; - Button&#10; - Input&#10; - Label&#10; - ErrorMessage">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/input-mask/input-mask-component.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/interfaces/input-mask.interface.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/recover/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/recover/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/button/button-component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/button/button-component.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +28,15 @@
         <option value="TypeScript JSX File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--follow-tags" />
+        <option name="title" value="Current Branch" />
+      </GitPushTagMode>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -32,26 +52,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;//wsl$/Ubuntu-22.04/home/ghost/projects/FCX/front-end&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;\\\\wsl$\\Ubuntu-22.04\\home\\ghost\\projects\\FCX\\front-end\\node_modules\\eslint&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;wsl://Ubuntu-22.04@/home/ghost/.nvm/versions/node/v21.2.0/bin/node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;\\\\wsl$\\Ubuntu-22.04\\home\\ghost\\projects\\FCX\\front-end\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "js.linters.configure.manually.selectedeslint": "true",
+    "last_opened_file_path": "//wsl$/Ubuntu-22.04/home/ghost/projects/FCX/front-end",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "\\\\wsl$\\Ubuntu-22.04\\home\\ghost\\projects\\FCX\\front-end\\node_modules\\eslint",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "wsl://Ubuntu-22.04@/home/ghost/.nvm/versions/node/v21.2.0/bin/node",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "ts.external.directory.path": "\\\\wsl$\\Ubuntu-22.04\\home\\ghost\\projects\\FCX\\front-end\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -77,8 +99,17 @@
       <updated>1700690542971</updated>
       <workItem from="1700690543976" duration="3426000" />
       <workItem from="1700759425470" duration="6359000" />
-      <workItem from="1700766030324" duration="9803000" />
+      <workItem from="1700766030324" duration="17711000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial Commit:&#10;&#10;- Added Login page.&#10;- Added Componenets:&#10; - FormGroup&#10; - Button&#10; - Input&#10; - Label&#10; - ErrorMessage">
+      <option name="closed" value="true" />
+      <created>1700778705030</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1700778705030</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -91,5 +122,9 @@
     <option featureType="dependencySupport" implementationName="executable:kubectl" />
     <option featureType="dependencySupport" implementationName="javascript:npm:next" />
     <option featureType="dependencySupport" implementationName="javascript:npm:postcss" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial Commit:&#10;&#10;- Added Login page.&#10;- Added Componenets:&#10; - FormGroup&#10; - Button&#10; - Input&#10; - Label&#10; - ErrorMessage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit:&#10;&#10;- Added Login page.&#10;- Added Componenets:&#10; - FormGroup&#10; - Button&#10; - Input&#10; - Label&#10; - ErrorMessage" />
   </component>
 </project>
