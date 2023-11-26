@@ -1,0 +1,35 @@
+'use client';
+import {CloseIcon} from "next/dist/client/components/react-dev-overlay/internal/icons/CloseIcon";
+import Button from "@/app/components/button";
+import Menu from "@/app/components/menu";
+import React, {useEffect} from "react";
+import {AlignLeft, ArrowArcLeft, ArrowLeft, ArrowRight} from "@phosphor-icons/react";
+
+
+const Sidebar: React.FC<any> = () => {
+    const [opened, setOpened] = React.useState<boolean>(true);
+    const [width, setWidth] = React.useState<number>(250);
+
+    const handleOpened = () => {
+        setOpened(!opened);
+    };
+
+    useEffect(() => {
+        if (opened) {
+            setWidth(250);
+        } else {
+            setWidth(100);
+        }
+    }, [opened]);
+
+    return (
+        <div className="hidden md:flex md:flex-col p-5 transition-all " style={{width: width}}>
+            <div className="w-[100%] flex items-center justify-end">
+                {opened ? <ArrowLeft className="cursor-pointer" onClick={()=> handleOpened()} /> : <ArrowRight className="cursor-pointer" onClick={()=> handleOpened()}/>}
+            </div>
+           <Menu onlyIcon={!opened}/>
+        </div>
+    )
+};
+
+export default Sidebar;

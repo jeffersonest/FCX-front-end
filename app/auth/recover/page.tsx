@@ -1,9 +1,9 @@
 'use client';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import Button from "@/app/components/button/button-component";
-import FormGroup from "@/app/components/form-group/form-group-component";
-import ErrorMessage from "@/app/components/error-message/error-message-component";
+import Button from "@/app/components/button";
+import FormGroup from "@/app/components/form-group";
+import ErrorMessage from "@/app/components/error-message";
 import {useRouter} from "next/navigation";
 
 
