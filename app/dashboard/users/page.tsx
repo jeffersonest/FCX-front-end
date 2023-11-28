@@ -3,11 +3,14 @@ import React from "react";
 import DataTable from "@/app/components/data-table";
 import {GridColDef, GridRowsProp} from "@mui/x-data-grid";
 import FormGroup from "@/app/components/form-group";
-import {useForm} from "react-hook-form";
+import {Controller, useForm} from "react-hook-form";
 import Button from "@/app/components/button";
 import Select from "@/app/components/select";
 import {SelectOption} from "@/app/interfaces/select.interface";
 import DefaultSwitch from "@/app/components/switch";
+import DefaultDatePicker from "@/app/components/date-picker";
+import {TextField} from "@mui/material";
+import Label from "@/app/components/label";
 
 const rows: GridRowsProp = [
     {id: 1, col1: 'aaaa', col2: 'World'},
@@ -23,9 +26,9 @@ const rows: GridRowsProp = [
 ];
 
 const columns: GridColDef[] = [
-    {field: 'col1', headerName: 'Column 1', width: 150},
-    {field: 'col2', headerName: 'Column 2', width: 150},
-    {field: 'col3', headerName: 'Column 3', width: 150},
+    {field: 'col1', headerName: 'Column 1', minWidth: 150},
+    {field: 'col2', headerName: 'Column 2', minWidth: 150},
+    {field: 'col3', headerName: 'Column 3', minWidth: 150},
 ];
 
 const options: SelectOption[] = [
@@ -34,46 +37,122 @@ const options: SelectOption[] = [
     {label: "Email", value: "email"}
 ];
 
+const ageOptions: SelectOption[] = [
+    {label: "Maior que 18 e menor que 26", value: "18>26"},
+    {label: "Maior que 25 e menor que 31", value: "25>31"},
+    {label: "Maior que 30 e menor que 36", value: "30>36"},
+    {label: "Maior que 35 e menor que 41", value: "35>41"},
+    {label: "Maior que 40", value: "<40"},
+];
+
 const UsersPage: React.FC = () => {
-    const {register, handleSubmit, watch} = useForm({
+    const {control, register, handleSubmit, watch} = useForm({
         defaultValues: {
             filterValue: '',
-            filterType: 'nome',
+            filterType: '',
+            ageRange: '',
             userActive: true,
+            birthDateBegin: '',
+            birthDateEnd: '',
+            registerDateBegin: '',
+            registerDateEnd: '',
+            updateDateBegin: '',
+            updateDateEnd: '',
+
         }
     },);
+
     const onSubmit = (data: any) => {
         console.log(data);
         // Aqui você pode implementar a lógica para filtrar os usuários
     };
     return (
-        <section className="p-5 w-[100%] h-[100%] bg-transparent">
-            <div className="bg-white w-[100%] h-[100%] rounded p-5">
-                <form className="flex flex-wrap px-0 py-5 pt-0 items-center h-auto w-[100%]"
-                      onSubmit={handleSubmit(onSubmit)}>
-                    <div className="max-w-[200px] mr-5">
-                        <FormGroup
-                            label=""
-                            register={register("filterValue")}
-                            placeholder={"Digite o valor do filtro"}
-                        />
+        <section className="p-5 bg-transparent">
+            <div className="bg-white rounded p-5 mx-auto">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                    <FormGroup
+                        label="Pesquise"
+                        register={register("filterValue")}
+                        placeholder="Digite o valor do filtro"
+                    />
+                    <div className="md:flex md:space-x-4 items-center">
+                        <div className="flex flex-col w-[100%]">
+                            <Label>Selecione o filtro</Label>
+                            <Controller
+                                name="filterType"
+                                control={control}
+                                defaultValue="none"
+                                render={({field: {onChange, value}}) => (
+                                    <Select
+                                        id="filter-option"
+                                        options={options}
+                                        value={value}
+                                        onChange={onChange}
+                                    />
+                                )}
+                            />
+                        </div>
                     </div>
-                    <div className="max-w-[200px] mr-5">
-                        <Select id="filter-option" options={options} defaultValue="none" register={register("filterType")}/>
+                    <div className="md:flex md:space-x-4 items-center">
+                        <div className="flex flex-col w-[100%]">
+                            <Label>Selecione o range de idade</Label>
+                            <Controller
+                                name="ageRange"
+                                control={control}
+                                defaultValue="none"
+                                render={({field: {onChange, value}}) => (
+                                    <Select
+                                        id="age-option"
+                                        options={ageOptions}
+                                        value={value}
+                                        onChange={onChange}
+                                    />
+                                )}
+                            />
+                        </div>
+                        <div className="flex flex-col w-[150px] justify-start">
+                            <Label>Cliente ativo</Label>
+                            <DefaultSwitch defaultChecked {...register("userActive")} />
+                        </div>
                     </div>
-                    <div className="">
-                        <label className="text-[#a7b1bb] text-sm font-semibold">Usuário Ativo</label>
-                        <DefaultSwitch defaultChecked {...register("userActive")} />
+                    <div
+                        className="flex space-y-2 min-[880px]:space-x-2 justify-center items-center max-[440px]:space-y-2 flex-wrap">
+                        <div className="mt-2">
+                            <Label>Período de nascimento</Label>
+                            <div className="flex items-center flex-wrap space-y-2 min-[440px]:space-y-0">
+                                <DefaultDatePicker {...register("birthDateBegin")}/>
+                                <Label> <span className="mx-2">Até</span> </Label>
+                                <DefaultDatePicker {...register("birthDateEnd")}/>
+                            </div>
+                        </div>
+                        <div>
+                            <Label>Período de cadastro</Label>
+                            <div className="flex items-center flex-wrap space-y-2 min-[440px]:space-y-0">
+                                <DefaultDatePicker {...register("registerDateBegin")}/>
+                                <Label> <span className="mx-2">Até</span> </Label>
+                                <DefaultDatePicker {...register("registerDateEnd")}/>
+                            </div>
+                        </div>
+                        <div>
+                            <Label>Período de atualização</Label>
+                            <div className="flex items-center flex-wrap space-y-2 min-[440px]:space-y-0">
+                                <DefaultDatePicker {...register("updateDateBegin")}/>
+                                <Label> <span className="mx-2">Até</span> </Label>
+                                <DefaultDatePicker {...register("updateDateEnd")}/>
+                            </div>
+                        </div>
                     </div>
-                    <div className="max-w-[200px]">
-                        <Button>Aplicar Filtro</Button>
+                    <div className="flex justify-end">
+                        <div className="max-w-[210px] my-5">
+                            <Button>Aplicar Filtro</Button>
+                        </div>
                     </div>
                 </form>
-
+                <div className="w-[100%] h-[2px] bg-gray-400 mb-5"></div>
                 <DataTable rows={rows} columns={columns}/>
             </div>
         </section>
-);
+    );
 }
 
 export default UsersPage;

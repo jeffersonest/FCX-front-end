@@ -9,8 +9,17 @@ const DefaultSwitch = React.forwardRef<HTMLButtonElement, SwitchProps>(
         focusVisibleClassName=".Mui-focusVisible"
         disableRipple
         sx={{
+          '& ': {
+              left: -12,
+              with: 20,
+              height: 40
+          },
+            '& .MuiSwitch-sizeMedium': {
+                left: -35,
+          },
           '& .MuiSwitch-switchBase.Mui-checked': {
             color: '#ff1654',
+
             '&:hover': {
               bgcolor: '#eb8cae',
             },

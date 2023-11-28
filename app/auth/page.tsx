@@ -36,8 +36,8 @@ const AuthPage: React.FC = () => {
     }, [errors])
 
     return (
-        <div className="shadow bg-white p-5 rounded max-w-[400px] w-[100%] h-[400px] flex items-center justify-center">
-            <form onSubmit={handleSubmit(onSubmit)}>
+        <div className=" shadow bg-white p-5 rounded max-w-[400px] w-[100%] h-[400px] flex items-center justify-center">
+            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center justify-center space-y-4">
                 <FormGroup
                     label="Email"
                     id="email"
@@ -53,8 +53,11 @@ const AuthPage: React.FC = () => {
                 />
                 {generalError && <ErrorMessage message={generalError}/>}
                 <Button type="submit">Login</Button>
-                <span className="text-[#a7b1bb] text-[12px] mt-1">Esqueceu a sua senha? </span><span
-                className="cursor-pointer text-[#ff1553] text-[12px] mt-1" onClick={handleRecoverClick}>Recuperar</span>
+                <div className="flex flex-col items-center justify-center space-y-[-5px]">
+                    <span className="text-[#a7b1bb] text-[12px] mt-1">Esqueceu a sua senha? </span>
+                    <span className="cursor-pointer text-[#ff1553] text-[12px] mt-1"
+                    onClick={handleRecoverClick}>Recuperar</span>
+                </div>
             </form>
         </div>
     );

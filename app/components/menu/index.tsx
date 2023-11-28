@@ -32,7 +32,7 @@ const Menu: React.FC<MenuProps> = ({onlyIcon, menuItems}) => {
     const Items = menuItems ?? MenuItems;
 
     return (
-        <ul className="flex flex-col items-center w-[100%] mb-5">
+        <ul className="flex flex-col items-center w-[100%]  space-y-3">
             {Items.map((item, index) => (
                 <li key={index} className="w-[100%]">
                     <Button onClick={item.action} justify="center" onlyIcon={onlyIcon} icon={item.icon}>

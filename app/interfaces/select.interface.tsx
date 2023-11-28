@@ -5,8 +5,10 @@ export interface SelectOption {
   value: string;
 }
 export default interface SelectProps {
-  id: string;
-  defaultValue: string;
+  id?: string;
+  defaultValue?: string;
   options: SelectOption[];
-  register: UseFormRegisterReturn;
+  register?: UseFormRegisterReturn;
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }

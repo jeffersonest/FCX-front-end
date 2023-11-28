@@ -15,6 +15,9 @@ const DataTable: React.FC<DataTableProps> = ({rows, columns}) => {
                       checkboxSelection
                       disableColumnSelector
                       disableColumnFilter
+                      disableColumnMenu
+                      autoHeight
+
             />
         </div>
     );
