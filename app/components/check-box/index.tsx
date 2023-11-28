@@ -2,10 +2,10 @@ import { Checkbox } from "@mui/material";
 import React, {ForwardedRef} from "react";
 import Input from "@/app/components/input";
 
-const DefaultCheckbox = React.forwardRef<HTMLButtonElement, any>((props, ref: ForwardedRef<HTMLButtonElement>) => (
+const DefaultCheckbox = React.forwardRef<HTMLButtonElement, any>((rest, ref: ForwardedRef<HTMLButtonElement>) => (
     <Checkbox
         ref={ref}
-        {...props}
+        {...rest}
         sx={{
             color: '#ff1654',
             '&.Mui-checked': {

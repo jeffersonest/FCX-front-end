@@ -7,7 +7,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <input
         ref={ref}
-        className="text-[#171a24] p-2 rounded border border-[#eaedef] mt-1 h-[40px]"
+        className="text-[#171a24] p-2 rounded border border-[#eaedef] h-[40px]"
         value={value}
         onChange={onChange}
         {...rest}

@@ -1,10 +1,6 @@
-export interface TableProps<T extends object> {
-  columns: Column<T>[];
-  data: T[];
-  onRowSelect?: (selectedRows: T[]) => void; // Callback para lidar com linhas selecionadas
-}
+import {GridColDef, GridRowsProp} from "@mui/x-data-grid";
 
-export interface Column<T extends object> {
-  Header: string;
-  accessor: keyof T;
+export interface DataTableProps {
+  rows: GridRowsProp;
+  columns: GridColDef[];
 }
