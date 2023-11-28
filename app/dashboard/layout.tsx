@@ -4,7 +4,7 @@ import Sidebar from "@/app/components/sidebar";
 
 const DashboardLayout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col h-[100%] w-[100%]">
       <Header />
       <div className="flex flex-1 flex-col md:flex-row">
         <Sidebar />

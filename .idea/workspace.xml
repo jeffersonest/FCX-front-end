@@ -4,25 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c9fb426-fa46-4639-92e1-f62d2510bdd9" name="Changes" comment="Initial Commit:&#10;&#10;- Added Recover password page">
-      <change afterPath="$PROJECT_DIR$/app/components/header-menu/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/header/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/menu/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/sidebar/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/dashboard/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/dashboard/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/interfaces/menu.interface.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/loader.gif" afterDir="false" />
+    <list default="true" id="5c9fb426-fa46-4639-92e1-f62d2510bdd9" name="Changes" comment="feat: Added sidebar / menu&#10;&#10;- Added Renamed components&#10;- Added generic Menu&#10;- Added Sidebar&#10;- Added loadpage">
+      <change afterPath="$PROJECT_DIR$/app/components/check-box/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/data-table/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/dashboard/users/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/interfaces/data-table.interface.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/recover/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/recover/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/button/button-component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/button/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/error-message/error-message-component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/error-message/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/form-group/form-group-component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/form-group/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/input/input-component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/input/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/label/label-component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/label/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/interfaces/button.interface.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/interfaces/button.interface.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/header-menu/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/header-menu/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/sidebar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/sidebar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
@@ -113,7 +104,7 @@
       <workItem from="1700690543976" duration="3426000" />
       <workItem from="1700759425470" duration="6359000" />
       <workItem from="1700766030324" duration="26268000" />
-      <workItem from="1701011233791" duration="9456000" />
+      <workItem from="1701011233791" duration="25724000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit:&#10;&#10;- Added Login page.&#10;- Added Componenets:&#10; - FormGroup&#10; - Button&#10; - Input&#10; - Label&#10; - ErrorMessage">
       <option name="closed" value="true" />
@@ -131,7 +122,23 @@
       <option name="project" value="LOCAL" />
       <updated>1700856318811</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Initial Commit:&#10;&#10;- Added Renamed components&#10;- Added generic Menu&#10;- Added Sidebar&#10;- Added loadpage">
+      <option name="closed" value="true" />
+      <created>1701033574858</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701033574858</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: Added sidebar / menu&#10;&#10;- Added Renamed components&#10;- Added generic Menu&#10;- Added Sidebar&#10;- Added loadpage">
+      <option name="closed" value="true" />
+      <created>1701033636760</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1701033636760</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +155,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit:&#10;&#10;- Added Login page.&#10;- Added Componenets:&#10; - FormGroup&#10; - Button&#10; - Input&#10; - Label&#10; - ErrorMessage" />
     <MESSAGE value="Initial Commit:&#10;&#10;- Added Recover password page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit:&#10;&#10;- Added Recover password page" />
+    <MESSAGE value="Initial Commit:&#10;&#10;- Added Renamed components&#10;- Added generic Menu&#10;- Added Sidebar&#10;- Added loadpage" />
+    <MESSAGE value="feat: Added sidebar / menu&#10;&#10;- Added Renamed components&#10;- Added generic Menu&#10;- Added Sidebar&#10;- Added loadpage" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Added sidebar / menu&#10;&#10;- Added Renamed components&#10;- Added generic Menu&#10;- Added Sidebar&#10;- Added loadpage" />
   </component>
 </project>

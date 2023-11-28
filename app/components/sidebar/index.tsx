@@ -24,10 +24,18 @@ const Sidebar: React.FC<any> = () => {
 
     return (
         <div className="hidden md:flex md:flex-col p-5 transition-all " style={{width: width}}>
-            <div className="w-[100%] flex items-center justify-end">
-                {opened ? <ArrowLeft className="cursor-pointer" onClick={()=> handleOpened()} /> : <ArrowRight className="cursor-pointer" onClick={()=> handleOpened()}/>}
+            <div className="w-[100%] flex items-center justify-end relative h-[40px]">
+                {opened ?
+                    <span className="bg-[#ff1654] p-1 rounded-2xl text-white absolute right-[-30px]">
+                        <ArrowLeft className="cursor-pointer" onClick={() => handleOpened()}/>
+                    </span>
+                    :
+                    <span className="bg-[#ff1654] p-1 rounded-2xl text-white absolute right-[-30px]">
+                        <ArrowRight className="cursor-pointer" onClick={() => handleOpened()}/>
+                    </span>
+                }
             </div>
-           <Menu onlyIcon={!opened}/>
+            <Menu onlyIcon={!opened}/>
         </div>
     )
 };
