@@ -17,6 +17,7 @@ const UserForm: React.FC<UserFormProps> = ({userData}) => {
             email: userData?.email ?? '',
             login: userData?.login ?? '',
             password: userData?.password ?? '',
+            repeatPassword: userData?.password ?? '',
             phone: userData?.phone ?? '',
             cpf: userData?.cpf ?? '',
             birthDate: userData?.birthDate ?? '',
@@ -32,6 +33,7 @@ const UserForm: React.FC<UserFormProps> = ({userData}) => {
                 email: userData.email,
                 login: userData.login,
                 password: userData.password,
+                repeatPassword: userData.password,
                 phone: userData.phone,
                 cpf: userData.cpf,
                 birthDate: userData.birthDate,
@@ -59,6 +61,9 @@ const UserForm: React.FC<UserFormProps> = ({userData}) => {
                 <FormGroup label="Senha" type="password"
                            register={register("password", {required: "Senha é obrigatória"})}
                            error={errors.password}/>
+                <FormGroup label="Repetir Senha" type="password"
+                           register={register("repeatPassword", {required: "Repetir a senha é obrigatório"})}
+                           error={errors.repeatPassword}/>
                 <FormGroup label="E-mail" type="email" register={register("email", emailValidation)}
                            error={errors.email}/>
                 <FormGroup label="Telefone" register={register("phone", {required: "Telefone é obrigatório"})}
@@ -68,11 +73,12 @@ const UserForm: React.FC<UserFormProps> = ({userData}) => {
                            register={register("motherName", {required: "Nome da mãe é obrigatório"})}
                            error={errors.motherName}/>
                 <div className="flex flex-col w-[150px] justify-start max-[768px]:mt-4 ">
-                        <Label>Cliente ativo</Label>
-                        <DefaultSwitch defaultChecked {...register("status")} />
+                    <Label>Cliente ativo</Label>
+                    <DefaultSwitch defaultChecked {...register("status")} />
                 </div>
                 <FormGroup label="Data de Nascimento" type="date"
-                           register={register("birthDate", {required: "Data de nascimento é obrigatório"})} error={errors.birthDate}/>
+                           register={register("birthDate", {required: "Data de nascimento é obrigatório"})}
+                           error={errors.birthDate}/>
                 <Button>Salvar</Button>
             </form>
         </div>
