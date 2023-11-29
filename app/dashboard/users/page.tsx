@@ -1,5 +1,5 @@
 'use client';
-import React from "react";
+import React, {useCallback} from "react";
 import DataTable from "@/app/components/data-table";
 import {GridColDef, GridRowsProp} from "@mui/x-data-grid";
 import FormGroup from "@/app/components/form-group";
@@ -11,6 +11,7 @@ import DefaultSwitch from "@/app/components/switch";
 import DefaultDatePicker from "@/app/components/date-picker";
 import {TextField} from "@mui/material";
 import Label from "@/app/components/label";
+import {FileCsv, FileDoc, FilePdf, FolderUser, Trash} from "@phosphor-icons/react";
 
 const rows: GridRowsProp = [
     {id: 1, col1: 'aaaa', col2: 'World'},
@@ -28,7 +29,6 @@ const rows: GridRowsProp = [
 const columns: GridColDef[] = [
     {field: 'col1', headerName: 'Column 1', minWidth: 150},
     {field: 'col2', headerName: 'Column 2', minWidth: 150},
-    {field: 'col3', headerName: 'Column 3', minWidth: 150},
 ];
 
 const options: SelectOption[] = [
@@ -46,6 +46,8 @@ const ageOptions: SelectOption[] = [
 ];
 
 const UsersPage: React.FC = () => {
+    const [selected, setSelected] = React.useState([]);
+    const [disable, setDisable] = React.useState(true);
     const {control, register, handleSubmit, watch} = useForm({
         defaultValues: {
             filterValue: '',
@@ -62,96 +64,117 @@ const UsersPage: React.FC = () => {
         }
     },);
 
+    const onRowSelectionModelChange = useCallback((event: []) => {
+        setSelected(event);
+        if (event.length > 0) {
+            setDisable(false);
+        } else {
+            setDisable(true);
+        }
+    }, [selected]);
+
     const onSubmit = (data: any) => {
         console.log(data);
         // Aqui você pode implementar a lógica para filtrar os usuários
     };
+
+
     return (
-        <section className="p-5 bg-transparent">
-            <div className="bg-white rounded p-5 mx-auto">
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                    <FormGroup
-                        label="Pesquise"
-                        register={register("filterValue")}
-                        placeholder="Digite o valor do filtro"
-                    />
-                    <div className="md:flex md:space-x-4 items-center">
-                        <div className="flex flex-col w-[100%]">
-                            <Label>Selecione o filtro</Label>
-                            <Controller
-                                name="filterType"
-                                control={control}
-                                defaultValue="none"
-                                render={({field: {onChange, value}}) => (
-                                    <Select
-                                        id="filter-option"
-                                        options={options}
-                                        value={value}
-                                        onChange={onChange}
-                                    />
-                                )}
-                            />
+        <div>
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                <div className="md:flex md:space-x-4 items-center">
+                    <div className="flex flex-col w-[100%]">
+                        <Label>Selecione o filtro</Label>
+                        <Controller
+                            name="filterType"
+                            control={control}
+                            defaultValue="none"
+                            render={({field: {onChange, value}}) => (
+                                <Select
+                                    id="filter-option"
+                                    options={options}
+                                    value={value}
+                                    onChange={onChange}
+                                />
+                            )}
+                        />
+                    </div>
+                </div>
+                <FormGroup
+                    label="Pesquise"
+                    register={register("filterValue")}
+                    placeholder="Digite o valor do filtro"
+                />
+                <div className="md:flex md:space-x-4 items-center">
+                    <div className="flex flex-col w-[100%]">
+                        <Label>Selecione o range de idade</Label>
+                        <Controller
+                            name="ageRange"
+                            control={control}
+                            defaultValue="none"
+                            render={({field: {onChange, value}}) => (
+                                <Select
+                                    id="age-option"
+                                    options={ageOptions}
+                                    value={value}
+                                    onChange={onChange}
+                                />
+                            )}
+                        />
+                    </div>
+                    <div className="flex flex-col w-[150px] justify-start max-[768px]:mt-4 ">
+                        <Label>Cliente ativo</Label>
+                        <DefaultSwitch defaultChecked {...register("userActive")} />
+                    </div>
+                </div>
+                <div
+                    className="flex space-y-2 min-[880px]:space-x-2 justify-center items-center max-[440px]:space-y-2 flex-wrap">
+                    <div className="mt-2">
+                        <Label>Período de nascimento</Label>
+                        <div className="flex items-center flex-wrap space-y-2 min-[440px]:space-y-0">
+                            <DefaultDatePicker {...register("birthDateBegin")}/>
+                            <Label> <span className="mx-2">Até</span> </Label>
+                            <DefaultDatePicker {...register("birthDateEnd")}/>
                         </div>
                     </div>
-                    <div className="md:flex md:space-x-4 items-center">
-                        <div className="flex flex-col w-[100%]">
-                            <Label>Selecione o range de idade</Label>
-                            <Controller
-                                name="ageRange"
-                                control={control}
-                                defaultValue="none"
-                                render={({field: {onChange, value}}) => (
-                                    <Select
-                                        id="age-option"
-                                        options={ageOptions}
-                                        value={value}
-                                        onChange={onChange}
-                                    />
-                                )}
-                            />
-                        </div>
-                        <div className="flex flex-col w-[150px] justify-start">
-                            <Label>Cliente ativo</Label>
-                            <DefaultSwitch defaultChecked {...register("userActive")} />
+                    <div>
+                        <Label>Período de cadastro</Label>
+                        <div className="flex items-center flex-wrap space-y-2 min-[440px]:space-y-0">
+                            <DefaultDatePicker {...register("registerDateBegin")}/>
+                            <Label> <span className="mx-2">Até</span> </Label>
+                            <DefaultDatePicker {...register("registerDateEnd")}/>
                         </div>
                     </div>
-                    <div
-                        className="flex space-y-2 min-[880px]:space-x-2 justify-center items-center max-[440px]:space-y-2 flex-wrap">
-                        <div className="mt-2">
-                            <Label>Período de nascimento</Label>
-                            <div className="flex items-center flex-wrap space-y-2 min-[440px]:space-y-0">
-                                <DefaultDatePicker {...register("birthDateBegin")}/>
-                                <Label> <span className="mx-2">Até</span> </Label>
-                                <DefaultDatePicker {...register("birthDateEnd")}/>
-                            </div>
-                        </div>
-                        <div>
-                            <Label>Período de cadastro</Label>
-                            <div className="flex items-center flex-wrap space-y-2 min-[440px]:space-y-0">
-                                <DefaultDatePicker {...register("registerDateBegin")}/>
-                                <Label> <span className="mx-2">Até</span> </Label>
-                                <DefaultDatePicker {...register("registerDateEnd")}/>
-                            </div>
-                        </div>
-                        <div>
-                            <Label>Período de atualização</Label>
-                            <div className="flex items-center flex-wrap space-y-2 min-[440px]:space-y-0">
-                                <DefaultDatePicker {...register("updateDateBegin")}/>
-                                <Label> <span className="mx-2">Até</span> </Label>
-                                <DefaultDatePicker {...register("updateDateEnd")}/>
-                            </div>
+                    <div>
+                        <Label>Período de atualização</Label>
+                        <div className="flex items-center flex-wrap space-y-2 min-[440px]:space-y-0">
+                            <DefaultDatePicker {...register("updateDateBegin")}/>
+                            <Label> <span className="mx-2">Até</span> </Label>
+                            <DefaultDatePicker {...register("updateDateEnd")}/>
                         </div>
                     </div>
-                    <div className="flex justify-end">
-                        <div className="max-w-[210px] my-5">
-                            <Button>Aplicar Filtro</Button>
-                        </div>
+                </div>
+                <div className="flex justify-end">
+                    <div className="min-w-[130px] my-5">
+                        <Button>Aplicar Filtro</Button>
                     </div>
-                </form>
-                <div className="w-[100%] h-[2px] bg-gray-400 mb-5"></div>
-                <DataTable rows={rows} columns={columns}/>
+                </div>
+            </form>
+            <div className="w-[100%] h-[2px] bg-gray-400"></div>
+            <div
+                className="w-[100%] flex flex-wrap items-center justify-end py-5 space-x-5 max-[660px]:space-x-2 max-[660px]:space-y-2">
+                <div className="min-w-[130px] flex max-[660px]:mt-2"><Button icon={<FilePdf/>}>Exportar</Button></div>
+                <div className="min-w-[130px] flex"><Button icon={<FileCsv/>}>Exportar</Button></div>
+                <div className="min-w-[130px] flex"><Button icon={<FileDoc/>}>Exportar</Button></div>
+                <div className="min-w-[130px] flex"><Button disabled={disable} icon={<FolderUser/>}>Alterar</Button>
+                </div>
+                <div className="min-w-[130px] flex max-[809px]:mt-2"><Button icon={<FolderUser/>}>Adicionar</Button>
+                </div>
+                <div className="min-w-[130px] flex max-[1060px]:mt-2"><Button disabled={disable}
+                                                                              icon={<Trash/>}>Desativar</Button></div>
             </div>
-        </section>
+            <DataTable onRowSelectionModelChange={onRowSelectionModelChange} rows={rows} columns={columns}/>
+        </div>
     );
 }
 

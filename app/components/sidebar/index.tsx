@@ -23,7 +23,7 @@ const Sidebar: React.FC<any> = () => {
     }, [opened]);
 
     return (
-        <div className="hidden md:flex md:flex-col p-5 transition-all " style={{width: width}}>
+        <div className="hidden min-[910px]:flex min-[910px]:flex-col p-5 transition-all " style={{width: width}}>
             <div className="w-[100%] flex items-center justify-end relative h-[40px]">
                 {opened ?
                     <span className="bg-[#ff1654] p-1 rounded-2xl text-white absolute right-[-30px]">

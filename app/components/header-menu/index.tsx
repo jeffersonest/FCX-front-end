@@ -16,7 +16,7 @@ const HeaderMenu: React.FC = () => {
             </div>
             <div onClick={() => setOpened(!opened)}
                  className={`${opened ? 'flex' : 'hidden'} z-10 transition-all absolute left-0 top-0 w-[100%] h-[100%] bg-transparent flex-col items-end`}>
-                <div className="w-[200px] h-auto p-5 bg-white mr-5" style={{marginTop: 'calc(70px + 1.25rem)'}}>
+                <div className="rounded shadow w-[200px] h-auto p-5 bg-white mr-5" style={{marginTop: 'calc(70px + 1.25rem)'}}>
                     <Menu/>
                 </div>
             </div>

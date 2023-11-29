@@ -3,7 +3,7 @@ import {pink} from "@mui/material/colors";
 import DefaultCheckbox from "@/app/components/check-box";
 import {DataTableProps} from "@/app/interfaces/data-table.interface";
 
-const DataTable: React.FC<DataTableProps> = ({rows, columns}) => {
+const DataTable: React.FC<DataTableProps> = ({rows, columns, onRowSelectionModelChange}) => {
     return (
         <div className="w-[100%] z-0">
             <DataGrid rows={rows} columns={columns} initialState={{pagination: {paginationModel: {pageSize: 10}}}}
@@ -17,7 +17,7 @@ const DataTable: React.FC<DataTableProps> = ({rows, columns}) => {
                       disableColumnFilter
                       disableColumnMenu
                       autoHeight
-
+                      onRowSelectionModelChange={onRowSelectionModelChange}
             />
         </div>
     );

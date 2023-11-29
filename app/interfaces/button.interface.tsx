@@ -3,4 +3,5 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   icon?: React.ReactNode;
   justify?: string;
   onlyIcon?: boolean;
+  disabled?: boolean;
 }
