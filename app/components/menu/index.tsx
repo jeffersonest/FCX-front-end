@@ -1,46 +1,51 @@
 import Button from "@/app/components/button";
-import {UserGear, Users} from "@phosphor-icons/react";
-import {CloseIcon} from "next/dist/client/components/react-dev-overlay/internal/icons/CloseIcon";
-import {MenuItem, MenuProps} from "@/app/interfaces/menu.interface";
+import { UserGear, Users } from "@phosphor-icons/react";
+import { CloseIcon } from "next/dist/client/components/react-dev-overlay/internal/icons/CloseIcon";
+import { MenuItem, MenuProps } from "@/app/interfaces/menu.interface";
+import { useAuthStore } from "@/app/store/auth-store";
+import { useRouter } from "next/navigation";
+import { useMemo } from "react";
 
-const MenuItems: MenuItem[] = [
-    {
-        name: 'Perfil',
-        icon: <UserGear/>,
-        action: () => {
-            console.log('Perfil');
-        }
-    },
-    {
-        name: 'Usuários',
-        icon: <Users/>,
-        action: () => {
-            console.log('Usuários');
-        }
-    },
-    {
-        name: 'Sair',
-        icon: <CloseIcon/>,
-        action: () => {
-            console.log('Sair');
-        }
-    },
-]
+const Menu: React.FC<MenuProps> = ({ onlyIcon, menuItems }) => {
+    const { setAccessToken } = useAuthStore();
+    const router = useRouter();
 
-const Menu: React.FC<MenuProps> = ({onlyIcon, menuItems}) => {
+       const MenuItems: MenuItem[] = [
+        {
+            name: 'Infos',
+            icon: <UserGear/>,
+            action: () => {
+                router.push('/dashboard');
+            }
+        },
+        {
+            name: 'Usuários',
+            icon: <Users/>,
+            action: () => {
+                router.push('/dashboard/users');
+            }
+        },
+        {
+            name: 'Sair',
+            icon: <CloseIcon/>,
+            action: () => {
+                setAccessToken('');
+                router.push('/auth');
+            }
+        },
+    ]
 
-    const Items = menuItems ?? MenuItems;
+    const Items = useMemo(() => menuItems || MenuItems, [menuItems]);
 
     return (
-        <ul className="flex flex-col items-center w-[100%]  space-y-3">
+        <ul className="flex flex-col items-center w-full space-y-3">
             {Items.map((item, index) => (
-                <li key={index} className="w-[100%]">
-                    <Button onClick={item.action} justify="center" onlyIcon={onlyIcon} icon={item.icon}>
+                <li key={item.name} className="w-full">
+                    <Button onClick={() => item.action()} justify="center" onlyIcon={onlyIcon} icon={item.icon}>
                         {item.name}
                     </Button>
                 </li>
             ))}
-
         </ul>
     );
 };

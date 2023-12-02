@@ -7,4 +7,5 @@ export interface FormGroupProps extends Omit<InputProps, 'ref'> {
     message?: string;
   };
   register: UseFormRegisterReturn;
+  mask?: string | null;
 }

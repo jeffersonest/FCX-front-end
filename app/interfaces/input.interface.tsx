@@ -4,4 +4,5 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   error?: {
     message?: string;
   };
+  mask?: string | null;
 }

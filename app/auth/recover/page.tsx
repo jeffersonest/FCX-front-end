@@ -42,6 +42,7 @@ const RecoveryPage: React.FC = () => {
                     id="cpf"
                     register={register("cpf", {required: "CPF é obrigatório" /* Aqui pode adicionar validações adicionais para CPF */})}
                     error={errors.cpf}
+                    mask={"999.999.999-99"}
                 />
                 <FormGroup
                     label="Data de Nascimento"

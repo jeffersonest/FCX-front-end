@@ -5,8 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c9fb426-fa46-4639-92e1-f62d2510bdd9" name="Changes" comment="feat: added:&#10;&#10;- users Page">
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/input-mask/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/interfaces/dto/login-form.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/interfaces/store/auth-store.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/interfaces/store/user-store.interface.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/providers/guard.provider.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/services/auth.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/services/user.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/store/auth-store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/store/user.store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/user-form/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/user-form/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/recover/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/recover/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/button/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/button/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/form-group/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/form-group/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/menu/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/menu/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/interfaces/button.interface.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/interfaces/button.interface.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/interfaces/form-group.interface.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/interfaces/form-group.interface.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/interfaces/input.interface.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/interfaces/input.interface.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/providers/providers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +78,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;//wsl$/Ubuntu-22.04/home/ghost/projects/FCX/front-end&quot;,
+    &quot;last_opened_file_path&quot;: &quot;//wsl$/Ubuntu-22.04/home/ghost/projects/FCX/back-end&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -69,6 +92,9 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="ReactBuddySettings">
+    <option name="extensionsIgnore" value="true" />
+  </component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -80,8 +106,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl$\Ubuntu-22.04\home\ghost\projects\FCX\front-end\app\providers" />
+      <recent name="\\wsl$\Ubuntu-22.04\home\ghost\projects\FCX\front-end\app\interfaces\store" />
+      <recent name="\\wsl$\Ubuntu-22.04\home\ghost\projects\FCX\front-end\app\interfaces\dto" />
+      <recent name="\\wsl$\Ubuntu-22.04\home\ghost\projects\FCX\front-end\app\store" />
       <recent name="\\wsl$\Ubuntu-22.04\home\ghost\projects\FCX\front-end\public\assets" />
-      <recent name="\\wsl$\Ubuntu-22.04\home\ghost\projects\FCX\front-end" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -95,7 +124,9 @@
       <workItem from="1700690543976" duration="3426000" />
       <workItem from="1700759425470" duration="6359000" />
       <workItem from="1700766030324" duration="26268000" />
-      <workItem from="1701011233791" duration="66111000" />
+      <workItem from="1701011233791" duration="66782000" />
+      <workItem from="1701385852922" duration="103000" />
+      <workItem from="1701413368044" duration="18181000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit:&#10;&#10;- Added Login page.&#10;- Added Componenets:&#10; - FormGroup&#10; - Button&#10; - Input&#10; - Label&#10; - ErrorMessage">
       <option name="closed" value="true" />
