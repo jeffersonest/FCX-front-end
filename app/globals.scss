@@ -20,6 +20,8 @@ html, body {
     background-repeat: no-repeat;
 }
 
-.MuiSwitch-root {
-
+.table-container {
+    box-sizing: content-box;
+    width: 100%;
+    max-width: calc(100% - 250px);
 }

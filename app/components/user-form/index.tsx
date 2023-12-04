@@ -9,8 +9,9 @@ import Label from "@/app/components/label";
 import {UserFormProps} from "@/app/interfaces/user-form.interface";
 import {cpfValidation, emailValidation} from "@/app/utils/validations";
 import DefaultSwitch from "@/app/components/switch";
+import ErrorMessage from "@/app/components/error-message";
 
-const UserForm: React.FC<UserFormProps> = ({userData}) => {
+const UserForm: React.FC<UserFormProps> = ({userData, error, loading, onSubmit}) => {
     const {formState: {errors}, register, handleSubmit, control, reset} = useForm({
         defaultValues: {
             name: userData?.name ?? '',
@@ -20,7 +21,7 @@ const UserForm: React.FC<UserFormProps> = ({userData}) => {
             repeatPassword: userData?.password ?? '',
             phone: userData?.phone ?? '',
             cpf: userData?.cpf ?? '',
-            birthDate: userData?.birthDate ?? '',
+            birth: userData?.birth ?? '',
             motherName: userData?.motherName ?? '',
             status: userData?.status ?? true
         },
@@ -36,16 +37,12 @@ const UserForm: React.FC<UserFormProps> = ({userData}) => {
                 repeatPassword: userData.password,
                 phone: userData.phone,
                 cpf: userData.cpf,
-                birthDate: userData.birthDate,
+                birth: userData.birth,
                 motherName: userData.motherName,
                 status: userData.status
             });
         }
     }, [userData, reset]);
-
-    const onSubmit = (data: any) => {
-        console.log(data);
-    };
 
     useEffect(() => {
         console.log(errors)
@@ -66,9 +63,9 @@ const UserForm: React.FC<UserFormProps> = ({userData}) => {
                            error={errors.repeatPassword}/>
                 <FormGroup label="E-mail" type="email" register={register("email", emailValidation)}
                            error={errors.email}/>
-                <FormGroup label="Telefone" register={register("phone", {required: "Telefone é obrigatório"})}
+                <FormGroup mask={"(99) 9 9999-9999"} label="Telefone" register={register("phone", {required: "Telefone é obrigatório"})}
                            error={errors.phone}/>
-                <FormGroup label="CPF" register={register("cpf", cpfValidation)} error={errors.cpf}/>
+                <FormGroup mask={"999.999.999-99"} label="CPF" register={register("cpf", cpfValidation)} error={errors.cpf}/>
                 <FormGroup label="Nome da Mãe"
                            register={register("motherName", {required: "Nome da mãe é obrigatório"})}
                            error={errors.motherName}/>
@@ -77,9 +74,10 @@ const UserForm: React.FC<UserFormProps> = ({userData}) => {
                     <DefaultSwitch defaultChecked {...register("status")} />
                 </div>
                 <FormGroup label="Data de Nascimento" type="date"
-                           register={register("birthDate", {required: "Data de nascimento é obrigatório"})}
-                           error={errors.birthDate}/>
-                <Button>Salvar</Button>
+                           register={register("birth", {required: "Data de nascimento é obrigatório"})}
+                           error={errors.birth}/>
+                 {error !== '' && <ErrorMessage message={error}/>}
+                <Button loading={loading}>Salvar</Button>
             </form>
         </div>
     );

@@ -1,5 +1,5 @@
 'use client';
-import React, {useCallback} from "react";
+import React, {useCallback, useEffect} from "react";
 import DataTable from "@/app/components/data-table";
 import {GridColDef, GridRowsProp} from "@mui/x-data-grid";
 import FormGroup from "@/app/components/form-group";
@@ -9,26 +9,28 @@ import Select from "@/app/components/select";
 import {SelectOption} from "@/app/interfaces/select.interface";
 import DefaultSwitch from "@/app/components/switch";
 import DefaultDatePicker from "@/app/components/date-picker";
-import {TextField} from "@mui/material";
+import {Container, TextField} from "@mui/material";
 import Label from "@/app/components/label";
 import {FileCsv, FileDoc, FilePdf, FolderUser, Trash} from "@phosphor-icons/react";
-
-const rows: GridRowsProp = [
-    {id: 1, col1: 'aaaa', col2: 'World'},
-    {id: 2, col1: 'bbbbb', col2: 'is Awesome'},
-    {id: 3, col1: 'ccccc', col2: 'is Amazing'},
-    {id: 4, col1: 'ddddd', col2: 'World'},
-    {id: 5, col1: 'eeeee', col2: 'is Awesome'},
-    {id: 6, col1: 'fffffff', col2: 'is Amazing'},
-    {id: 7, col1: 'gggggggg', col2: 'World'},
-    {id: 8, col1: 'hhhhhhhhh', col2: 'is Awesome'},
-    {id: 9, col1: 'iiiiiii', col2: 'is Amazing'},
-    {id: 10, col1: 'jjjjjjjj', col2: 'World'},
-];
+import UserService from "@/app/services/user.service";
+import {useAuthStore} from "@/app/store/auth-store";
+import {UserFilterDto} from "@/app/interfaces/dto/user-filter.dto";
+import {UserDto} from "@/app/interfaces/dto/user.dto";
+import Table from "@/app/components/table";
+import {useRouter} from "next/navigation";
 
 const columns: GridColDef[] = [
-    {field: 'col1', headerName: 'Column 1', minWidth: 150},
-    {field: 'col2', headerName: 'Column 2', minWidth: 150},
+    {field: 'id', headerName: 'Id', minWidth: 0, },
+    {field: 'name', headerName: 'Nome', minWidth: 0, },
+    {field: 'login', headerName: 'Login', minWidth: 0, },
+    {field: 'email', headerName: 'Email', minWidth: 0, },
+    {field: 'cpf', headerName: 'CPF', minWidth: 0, },
+    {field: 'phone', headerName: 'Telefone', minWidth: 0, },
+    {field: 'birth', headerName: 'Data de Nascimento', minWidth: 0, },
+    {field: 'motherName', headerName: 'Nome da mãe', minWidth: 0, },
+    {field: 'status', headerName: 'Status', minWidth: 0, },
+    {field: 'createdAt', headerName: 'Data de Cadastro', minWidth: 0, },
+    {field: 'updatedAt', headerName: 'Data de Atualização', minWidth: 0, },
 ];
 
 const options: SelectOption[] = [
@@ -42,16 +44,20 @@ const ageOptions: SelectOption[] = [
     {label: "Maior que 25 e menor que 31", value: "25>31"},
     {label: "Maior que 30 e menor que 36", value: "30>36"},
     {label: "Maior que 35 e menor que 41", value: "35>41"},
-    {label: "Maior que 40", value: "<40"},
+    {label: "Maior que 40", value: ">40"},
 ];
 
 const UsersPage: React.FC = () => {
+    const router = useRouter();
     const [selected, setSelected] = React.useState([]);
     const [disable, setDisable] = React.useState(true);
-    const {control, register, handleSubmit, watch} = useForm({
+    const {accessToken} = useAuthStore();
+    const [users, setUsers] = React.useState<UserDto[]>([]);
+    const usersService = new UserService(accessToken);
+    const {control, register, handleSubmit, watch} = useForm<UserFilterDto>({
         defaultValues: {
             filterValue: '',
-            filterType: '',
+            filterType: 'none',
             ageRange: '',
             userActive: true,
             birthDateBegin: '',
@@ -71,13 +77,31 @@ const UsersPage: React.FC = () => {
         } else {
             setDisable(true);
         }
-    }, [selected]);
+    }, []);
 
-    const onSubmit = (data: any) => {
-        console.log(data);
-        // Aqui você pode implementar a lógica para filtrar os usuários
+    const onSubmit = async (data: UserFilterDto) => {
+         const result = await usersService.filter(data)
+         setUsers(result);
     };
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const defaultData = {
+                filterValue: '',
+                filterType: '',
+                ageRange: '',
+                userActive: true,
+                birthDateBegin: '',
+                birthDateEnd: '',
+                registerDateBegin: '',
+                registerDateEnd: '',
+                updateDateBegin: '',
+                updateDateEnd: '',
+            };
+            await onSubmit(defaultData);
+        };
+        fetchData();
+    }, []);
 
     return (
         <div>
@@ -107,7 +131,7 @@ const UsersPage: React.FC = () => {
                 />
                 <div className="md:flex md:space-x-4 items-center">
                     <div className="flex flex-col w-[100%]">
-                        <Label>Selecione o range de idade</Label>
+                        <Label>Selecione o intervalo de idade</Label>
                         <Controller
                             name="ageRange"
                             control={control}
@@ -162,18 +186,20 @@ const UsersPage: React.FC = () => {
             </form>
             <div className="w-[100%] h-[2px] bg-gray-400"></div>
             <div
-                className="w-[100%] flex flex-wrap items-center justify-end py-5 space-x-5 max-[660px]:space-x-2 max-[660px]:space-y-2">
-                <div className="min-w-[130px] flex max-[660px]:mt-2"><Button icon={<FilePdf/>}>Exportar</Button></div>
+                className="w-[100%] flex flex-wrap items-center justify-end py-5 space-x-5 space-y-2">
+                <div className="min-w-[130px] flex mt-2"><Button icon={<FilePdf/>}>Exportar</Button></div>
                 <div className="min-w-[130px] flex"><Button icon={<FileCsv/>}>Exportar</Button></div>
                 <div className="min-w-[130px] flex"><Button icon={<FileDoc/>}>Exportar</Button></div>
                 <div className="min-w-[130px] flex"><Button disabled={disable} icon={<FolderUser/>}>Alterar</Button>
                 </div>
-                <div className="min-w-[130px] flex max-[809px]:mt-2"><Button icon={<FolderUser/>}>Adicionar</Button>
+                <div className="min-w-[130px] flex"><Button onClick={()=> router.push("/dashboard/users/create")} icon={<FolderUser/>}>Adicionar</Button>
                 </div>
-                <div className="min-w-[130px] flex max-[1060px]:mt-2"><Button disabled={disable}
-                                                                              icon={<Trash/>}>Desativar</Button></div>
+                <div className="min-w-[130px] flex"><Button disabled={disable} icon={<Trash/>}>Desativar</Button></div>
             </div>
-            <DataTable onRowSelectionModelChange={onRowSelectionModelChange} rows={rows} columns={columns}/>
+
+            <div>
+                <DataTable onRowSelectionModelChange={onRowSelectionModelChange} rows={users} columns={columns}/>
+            </div>
         </div>
     );
 }

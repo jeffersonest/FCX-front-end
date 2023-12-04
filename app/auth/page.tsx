@@ -24,7 +24,7 @@ const AuthPage: React.FC = () => {
         if (accessToken) {
             router.push('/dashboard');
         }
-    }, []);
+    }, [accessToken, router]);
 
     const onSubmit = async (data: LoginFormDto): Promise<any> => {
         setLoading(true);

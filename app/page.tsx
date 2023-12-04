@@ -8,7 +8,7 @@ export default function Home() {
 
    useEffect(() => {
         router.push('/auth');
-   }, []);
+   }, [router]);
 
   return (
     <main className="flex h-[100%] w-[100%] items-center justify-center p-24">

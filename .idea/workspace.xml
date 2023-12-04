@@ -4,30 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c9fb426-fa46-4639-92e1-f62d2510bdd9" name="Changes" comment="feat: added:&#10;&#10;- users Page">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/input-mask/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/interfaces/dto/login-form.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/interfaces/store/auth-store.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/interfaces/store/user-store.interface.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/providers/guard.provider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/services/auth.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/services/user.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/store/auth-store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/store/user.store.ts" afterDir="false" />
+    <list default="true" id="5c9fb426-fa46-4639-92e1-f62d2510bdd9" name="Changes" comment="feat: added:&#10;&#10;- Added Login Services&#10;- Added Provider &#10;- Added DefaultInputMask">
+      <change afterPath="$PROJECT_DIR$/app/components/table/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/interfaces/dto/bad-request.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/interfaces/dto/user-filter.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/interfaces/dto/user.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/interfaces/store/table.interface.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/auth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/recover/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/recover/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/button/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/button/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/form-group/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/form-group/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/data-table/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/data-table/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/header/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/menu/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/menu/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/sidebar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/sidebar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/user-form/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/user-form/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/dashboard/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/interfaces/button.interface.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/interfaces/button.interface.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/interfaces/form-group.interface.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/interfaces/form-group.interface.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/interfaces/input.interface.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/interfaces/input.interface.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/providers/providers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/users/create/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/users/create/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/users/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/users/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/users/update/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/users/update/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/interfaces/user-form.interface.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/interfaces/user-form.interface.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/providers/guard.provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/providers/guard.provider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/user.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
@@ -126,7 +124,8 @@
       <workItem from="1700766030324" duration="26268000" />
       <workItem from="1701011233791" duration="66782000" />
       <workItem from="1701385852922" duration="103000" />
-      <workItem from="1701413368044" duration="18181000" />
+      <workItem from="1701413368044" duration="33987000" />
+      <workItem from="1701624818964" duration="11280000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit:&#10;&#10;- Added Login page.&#10;- Added Componenets:&#10; - FormGroup&#10; - Button&#10; - Input&#10; - Label&#10; - ErrorMessage">
       <option name="closed" value="true" />
@@ -184,7 +183,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701210178769</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="feat: added:&#10;&#10;- Added Login Services&#10;- Added Provider &#10;- Added DefaultInputMask">
+      <option name="closed" value="true" />
+      <created>1701559413121</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1701559413121</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,6 +213,7 @@
     <MESSAGE value="feat: Added Mui x datagrid" />
     <MESSAGE value="feat: added:&#10;&#10;- Switch&#10;- Select&#10;- Users Table" />
     <MESSAGE value="feat: added:&#10;&#10;- users Page" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: added:&#10;&#10;- users Page" />
+    <MESSAGE value="feat: added:&#10;&#10;- Added Login Services&#10;- Added Provider &#10;- Added DefaultInputMask" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: added:&#10;&#10;- Added Login Services&#10;- Added Provider &#10;- Added DefaultInputMask" />
   </component>
 </project>

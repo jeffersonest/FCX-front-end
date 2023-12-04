@@ -11,7 +11,7 @@ const GuardProvider: React.FC<LayoutProps> = ({children}) => {
         if (!accessToken || accessToken === '') {
             router.push('/auth');
         }
-    }, []);
+    }, [accessToken, router]);
 
     return (
         <>

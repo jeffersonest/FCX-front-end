@@ -35,7 +35,7 @@ const Menu: React.FC<MenuProps> = ({ onlyIcon, menuItems }) => {
         },
     ]
 
-    const Items = useMemo(() => menuItems || MenuItems, [menuItems]);
+    const Items = useMemo(() => { return (menuItems || MenuItems)}, [menuItems, MenuItems]);
 
     return (
         <ul className="flex flex-col items-center w-full space-y-3">

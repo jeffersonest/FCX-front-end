@@ -6,7 +6,7 @@ export interface UserData {
     password: string;
     phone: string;
     cpf: string;
-    birthDate: string;
+    birth: string;
     motherName: string;
     status: boolean;
     createdAt: string;
@@ -16,9 +16,10 @@ export interface UserData {
 
 export interface UserFormProps {
     userData?: UserData;
-    onSubmit?: (e: any) => void;
+    onSubmit: (e: any) => void;
     onCancel?: (e: any) => void;
     onChange?: (e: any) => void;
-    errors?: any;
+    error?: any;
     isEdit?: boolean;
+    loading?: boolean;
 }

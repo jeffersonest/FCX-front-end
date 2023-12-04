@@ -20,7 +20,6 @@ const DashboardLayout: React.FC<LayoutProps> = ({children}) => {
                 <Header/>
                 <div className="flex flex-1 flex-col md:flex-row">
                     <Sidebar/>
-
                     <main className="flex-1 bg-[#f5f7fa]">
                         <section className="p-5 bg-transparent">
                             <div className="bg-white rounded p-5 mx-auto">
