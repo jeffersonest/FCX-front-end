@@ -3,9 +3,10 @@ import { pink } from '@mui/material/colors';
 import Switch, { SwitchProps } from '@mui/material/Switch';
 
 const DefaultSwitch = React.forwardRef<HTMLButtonElement, SwitchProps>(
-  (props, ref: ForwardedRef<HTMLButtonElement>) => {
+  ({checked ,...props}, ref: ForwardedRef<HTMLButtonElement>) => {
     return (
       <Switch
+        checked={checked}
         focusVisibleClassName=".Mui-focusVisible"
         disableRipple
         sx={{

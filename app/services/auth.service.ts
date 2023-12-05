@@ -15,6 +15,20 @@ class AuthService{
             return false;
         }
     }
+
+    async validateToken(token: string): Promise<any> {
+        const response = await fetch('http://localhost:3000/auth/validate', {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
+        if(response.ok){
+            return response.json()
+        } else {
+            return false;
+        }
+    }
 }
 
 export default AuthService;

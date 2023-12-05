@@ -1,5 +1,5 @@
 export interface UserDto {
-    id: string;
+    id: number;
     name: string;
     login: string;
     email: string;
@@ -8,8 +8,8 @@ export interface UserDto {
     phone: string;
     birth: string;
     motherName: string;
-    status: string;
-    createdAt: Date;
-    updatedAt: Date;
+    status: boolean;
+    createdAt: string;
+    updatedAt: string;
 }
 

@@ -21,10 +21,16 @@ const AuthPage: React.FC = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        if (accessToken) {
-            router.push('/dashboard');
-        }
-    }, [accessToken, router]);
+        const validateAccessToken = async () => {
+            const isValid =await authService.validateToken(accessToken);
+
+                if (isValid) {
+                    router.push('/dashboard');
+                }
+            }
+
+        validateAccessToken();
+    });
 
     const onSubmit = async (data: LoginFormDto): Promise<any> => {
         setLoading(true);
@@ -44,7 +50,7 @@ const AuthPage: React.FC = () => {
     };
 
     useEffect(() => {
-        console.log(errors)
+
     }, [errors])
 
     return (

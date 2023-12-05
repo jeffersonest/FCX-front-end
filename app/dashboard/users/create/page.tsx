@@ -24,13 +24,15 @@ const CreateUsersPage: React.FC = () => {
         const response = await userService.create(data);
         setLoading(false);
 
-        // Verificar se a resposta é BadRequestDto
         if ('statusCode' in response && 'message' in response) {
+            if(response.statusCode === 401) {
+                router.push('/auth');
+            }
             setError(response.message);
+
             return;
         }
 
-        // Caso contrário, trata como UserDto
         router.push('/dashboard/users');
     }
 

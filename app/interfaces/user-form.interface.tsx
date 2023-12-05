@@ -4,6 +4,7 @@ export interface UserData {
     email: string;
     login: string;
     password: string;
+    repeatPassword?: string;
     phone: string;
     cpf: string;
     birth: string;

@@ -5,27 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c9fb426-fa46-4639-92e1-f62d2510bdd9" name="Changes" comment="feat: added:&#10;&#10;- Added Login Services&#10;- Added Provider &#10;- Added DefaultInputMask">
-      <change afterPath="$PROJECT_DIR$/app/components/table/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/interfaces/dto/bad-request.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/interfaces/dto/user-filter.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/interfaces/dto/user.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/interfaces/store/table.interface.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/store/selected-row.store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/auth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/data-table/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/data-table/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/header/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/button/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/button/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/menu/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/menu/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/sidebar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/sidebar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/switch/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/switch/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/user-form/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/user-form/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/dashboard/users/create/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/users/create/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/dashboard/users/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/users/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/dashboard/users/update/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/users/update/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/globals.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/interfaces/dto/user.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/interfaces/dto/user.dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/interfaces/user-form.interface.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/interfaces/user-form.interface.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/providers/guard.provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/providers/guard.provider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/auth.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/validations.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/validations.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
@@ -125,7 +119,9 @@
       <workItem from="1701011233791" duration="66782000" />
       <workItem from="1701385852922" duration="103000" />
       <workItem from="1701413368044" duration="33987000" />
-      <workItem from="1701624818964" duration="11280000" />
+      <workItem from="1701624818964" duration="37494000" />
+      <workItem from="1701711433017" duration="10363000" />
+      <workItem from="1701746412850" duration="760000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit:&#10;&#10;- Added Login page.&#10;- Added Componenets:&#10; - FormGroup&#10; - Button&#10; - Input&#10; - Label&#10; - ErrorMessage">
       <option name="closed" value="true" />
@@ -215,5 +211,15 @@
     <MESSAGE value="feat: added:&#10;&#10;- users Page" />
     <MESSAGE value="feat: added:&#10;&#10;- Added Login Services&#10;- Added Provider &#10;- Added DefaultInputMask" />
     <option name="LAST_COMMIT_MESSAGE" value="feat: added:&#10;&#10;- Added Login Services&#10;- Added Provider &#10;- Added DefaultInputMask" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/app/components/input-mask/index.tsx</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

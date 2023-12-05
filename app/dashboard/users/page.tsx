@@ -1,5 +1,5 @@
 'use client';
-import React, {useCallback, useEffect} from "react";
+import React, {useCallback, useEffect, useMemo} from "react";
 import DataTable from "@/app/components/data-table";
 import {GridColDef, GridRowsProp} from "@mui/x-data-grid";
 import FormGroup from "@/app/components/form-group";
@@ -18,6 +18,7 @@ import {UserFilterDto} from "@/app/interfaces/dto/user-filter.dto";
 import {UserDto} from "@/app/interfaces/dto/user.dto";
 import Table from "@/app/components/table";
 import {useRouter} from "next/navigation";
+import {selectedStore} from "@/app/store/selected-row.store";
 
 const columns: GridColDef[] = [
     {field: 'id', headerName: 'Id', minWidth: 0, },
@@ -48,12 +49,16 @@ const ageOptions: SelectOption[] = [
 ];
 
 const UsersPage: React.FC = () => {
+    const [loading, setLoading] = React.useState(false);
+    const [disableLoading, setDisableLoading] = React.useState(false);
+    const [refresh, setRefresh] = React.useState(false);
     const router = useRouter();
     const [selected, setSelected] = React.useState([]);
     const [disable, setDisable] = React.useState(true);
     const {accessToken} = useAuthStore();
     const [users, setUsers] = React.useState<UserDto[]>([]);
-    const usersService = new UserService(accessToken);
+    const usersService = useMemo(() => new UserService(accessToken), [accessToken]);
+    const {ids, setIds} = selectedStore();
     const {control, register, handleSubmit, watch} = useForm<UserFilterDto>({
         defaultValues: {
             filterValue: '',
@@ -70,6 +75,10 @@ const UsersPage: React.FC = () => {
         }
     },);
 
+    useEffect(() => {
+        setIds(selected.join(','));
+    }, [selected, setIds]);
+
     const onRowSelectionModelChange = useCallback((event: []) => {
         setSelected(event);
         if (event.length > 0) {
@@ -79,9 +88,44 @@ const UsersPage: React.FC = () => {
         }
     }, []);
 
-    const onSubmit = async (data: UserFilterDto) => {
-         const result = await usersService.filter(data)
-         setUsers(result);
+    const onSubmit = useCallback(async (data: UserFilterDto) => {
+        setLoading(true);
+        const response = await usersService.filter(data)
+
+
+        if ('statusCode' in response && 'message' in response) {
+            if(response.statusCode === 401) {
+                router.push('/auth');
+            }
+            return;
+        }
+
+        setUsers(response);
+        setLoading(false);
+    }, [router, usersService]);
+
+    const updateUsers = async () => {
+        router.push(`/dashboard/users/update`);
+    }
+
+    const disableUser = async () => {
+
+        setDisableLoading(true);
+
+        selected.map(async (item) => {
+            const response = await usersService.disable(item);
+
+            if ('statusCode' in response && 'message' in response) {
+            if(response.statusCode === 401) {
+                router.push('/auth');
+            }
+            return;
+        }
+        });
+
+
+        setDisableLoading(false);
+        setRefresh(true);
     };
 
     useEffect(() => {
@@ -101,7 +145,8 @@ const UsersPage: React.FC = () => {
             await onSubmit(defaultData);
         };
         fetchData();
-    }, []);
+        setRefresh(false)
+    }, [refresh, onSubmit]);
 
     return (
         <div>
@@ -180,7 +225,7 @@ const UsersPage: React.FC = () => {
                 </div>
                 <div className="flex justify-end">
                     <div className="min-w-[130px] my-5">
-                        <Button>Aplicar Filtro</Button>
+                        <Button loading={loading}>Aplicar Filtro</Button>
                     </div>
                 </div>
             </form>
@@ -190,11 +235,11 @@ const UsersPage: React.FC = () => {
                 <div className="min-w-[130px] flex mt-2"><Button icon={<FilePdf/>}>Exportar</Button></div>
                 <div className="min-w-[130px] flex"><Button icon={<FileCsv/>}>Exportar</Button></div>
                 <div className="min-w-[130px] flex"><Button icon={<FileDoc/>}>Exportar</Button></div>
-                <div className="min-w-[130px] flex"><Button disabled={disable} icon={<FolderUser/>}>Alterar</Button>
+                <div className="min-w-[130px] flex"><Button onClick={()=> updateUsers()} disabled={disable} icon={<FolderUser/>}>Alterar</Button>
                 </div>
                 <div className="min-w-[130px] flex"><Button onClick={()=> router.push("/dashboard/users/create")} icon={<FolderUser/>}>Adicionar</Button>
                 </div>
-                <div className="min-w-[130px] flex"><Button disabled={disable} icon={<Trash/>}>Desativar</Button></div>
+                <div className="min-w-[130px] flex"><Button loading={disableLoading} onClick={()=> disableUser()} disabled={disable} icon={<Trash/>}>Desativar</Button></div>
             </div>
 
             <div>
