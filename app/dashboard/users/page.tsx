@@ -51,6 +51,7 @@ const ageOptions: SelectOption[] = [
 const UsersPage: React.FC = () => {
     const [loading, setLoading] = React.useState(false);
     const [disableLoading, setDisableLoading] = React.useState(false);
+    const [multiUpdate, setMultiUpdate] = React.useState(true);
     const [refresh, setRefresh] = React.useState(false);
     const router = useRouter();
     const [selected, setSelected] = React.useState([]);
@@ -82,10 +83,19 @@ const UsersPage: React.FC = () => {
     const onRowSelectionModelChange = useCallback((event: []) => {
         setSelected(event);
         if (event.length > 0) {
-            setDisable(false);
+            setDisable(false)
+            setMultiUpdate(false);
         } else {
             setDisable(true);
+            setMultiUpdate(true);
         }
+
+        if(event.length > 0 && event.length < 2) {
+            setMultiUpdate(false);
+        } else {
+            setMultiUpdate(true);
+        }
+
     }, []);
 
     const onSubmit = useCallback(async (data: UserFilterDto) => {
@@ -232,10 +242,7 @@ const UsersPage: React.FC = () => {
             <div className="w-[100%] h-[2px] bg-gray-400"></div>
             <div
                 className="w-[100%] flex flex-wrap items-center justify-end py-5 space-x-5 space-y-2">
-                <div className="min-w-[130px] flex mt-2"><Button icon={<FilePdf/>}>Exportar</Button></div>
-                <div className="min-w-[130px] flex"><Button icon={<FileCsv/>}>Exportar</Button></div>
-                <div className="min-w-[130px] flex"><Button icon={<FileDoc/>}>Exportar</Button></div>
-                <div className="min-w-[130px] flex"><Button onClick={()=> updateUsers()} disabled={disable} icon={<FolderUser/>}>Alterar</Button>
+                <div className="min-w-[130px] flex mt-2"><Button onClick={()=> updateUsers()} disabled={multiUpdate} icon={<FolderUser/>}>Alterar</Button>
                 </div>
                 <div className="min-w-[130px] flex"><Button onClick={()=> router.push("/dashboard/users/create")} icon={<FolderUser/>}>Adicionar</Button>
                 </div>

@@ -5,18 +5,28 @@ import Button from "@/app/components/button";
 import FormGroup from "@/app/components/form-group";
 import ErrorMessage from "@/app/components/error-message";
 import {useRouter} from "next/navigation";
-
-
-// Outros imports
+import {RecoverAccessDto} from "@/app/interfaces/dto/recover-access.dto";
+import AuthService from "@/app/services/auth.service";
+import Label from "@/app/components/label";
+import {Check} from "@phosphor-icons/react";
 
 const RecoveryPage: React.FC = () => {
-    const {register, handleSubmit, formState: {errors}} = useForm();
+    const {register, handleSubmit, formState: {errors}} = useForm<RecoverAccessDto>();
     const [generalError, setGeneralError] = useState("");
+    const [success, setSuccess] = useState(false);
     const router = useRouter();
+    const authService = new AuthService();
+    const [loading, setLoading] = useState(false);
 
-    const onSubmit = (data: any) => {
-        console.log(data);
-        // Aqui você pode adicionar a lógica de recuperação de senha
+    const onSubmit = async (data: RecoverAccessDto) => {
+        setLoading(true);
+        const response = await authService.recoverPassword(data);
+        if (!response) {
+            setGeneralError("Erro ao recuperar senha");
+        } else {
+            setSuccess(true);
+        }
+        setLoading(false);
     };
 
     const handleLoginClick = () => {
@@ -44,14 +54,8 @@ const RecoveryPage: React.FC = () => {
                     error={errors.cpf}
                     mask={"999.999.999-99"}
                 />
-                <FormGroup
-                    label="Data de Nascimento"
-                    type="date"
-                    id="birthDate"
-                    register={register("birthDate", {required: "Data de nascimento é obrigatória"})}
-                    error={errors.birthDate}
-                />
                 {generalError && <ErrorMessage message={generalError}/>}
+                {success && <Label>Email enviado com sucesso! </Label>}
                 <Button type="submit">Recuperar Senha</Button>
                 <div className="flexitems-center justify-center">
                     <span className="text-[#a7b1bb] text-[12px] mt-1">Fazer </span><span

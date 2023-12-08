@@ -1,6 +1,7 @@
 import {UserFilterDto} from "@/app/interfaces/dto/user-filter.dto";
 import {UserDto} from "@/app/interfaces/dto/user.dto";
 import {BadRequestDto} from "@/app/interfaces/dto/bad-request.dto";
+import {CountUsersDto} from "@/app/interfaces/dto/count-users.dto";
 
 class UserService {
     private accessToken: string;
@@ -33,6 +34,18 @@ class UserService {
 
         return await response.json();
 
+    }
+
+    async countUsers(): Promise<CountUsersDto | BadRequestDto> {
+
+        const response = await fetch('http://localhost:3000/users/details', {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${this.accessToken}`
+            }
+        })
+
+        return await response.json();
     }
 
     async update (user: UserDto, id: string): Promise<UserDto | BadRequestDto> {

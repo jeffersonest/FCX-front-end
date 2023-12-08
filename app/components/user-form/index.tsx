@@ -10,7 +10,6 @@ import {UserData, UserFormProps} from "@/app/interfaces/user-form.interface";
 import {cpfValidation, emailValidation} from "@/app/utils/validations";
 import DefaultSwitch from "@/app/components/switch";
 import ErrorMessage from "@/app/components/error-message";
-import Switch from "react-switch";
 
 const UserForm: React.FC<UserFormProps> = ({userData, error, loading, onSubmit}) => {
 
@@ -51,7 +50,7 @@ const UserForm: React.FC<UserFormProps> = ({userData, error, loading, onSubmit})
 
     useEffect(() => {
         setChecked(userData ? userData.status : true);
-    }, []);
+    },[userData]);
 
 
     return (
@@ -77,13 +76,7 @@ const UserForm: React.FC<UserFormProps> = ({userData, error, loading, onSubmit})
                            error={errors.motherName}/>
                 <div className="flex flex-col w-[150px] justify-start max-[768px]:mt-4 ">
                     <Label>Cliente ativo</Label>
-                    <Controller
-                        name="status"
-                        control={control}
-                        render={({field: {value, onChange, onBlur, name, ref}}) => (
-                            <DefaultSwitch checked={value} defaultChecked={value} id={name} ref={ref} />
-                        )}
-                    />
+                    <DefaultSwitch defaultChecked={userData?.status} {...register("status")} />
                 </div>
                 <FormGroup label="Data de Nascimento" type="date"
                            register={register("birth", validationRules.birth)}

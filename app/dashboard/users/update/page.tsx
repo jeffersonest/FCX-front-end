@@ -1,5 +1,5 @@
 'use client';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import {useRouter} from 'next/navigation';
 import UserForm from "@/app/components/user-form";
 import {selectedStore} from "@/app/store/selected-row.store";
@@ -14,8 +14,9 @@ const UpdateUsersPage = () => {
     const {ids, setIds} = selectedStore();
     const [user, setUser] = useState<UserDto>({birth: "", cpf: "", createdAt: "", email: "", id: 0, login: "", motherName: "", name: "", password: "", phone: "", status: false, updatedAt: ""});
     const {accessToken} = useAuthStore();
-    const userService = new UserService(accessToken);
+    const userService = useMemo(() => new UserService(accessToken), [accessToken]);
     const [userForms, setUserForms] = useState<any[]>([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -29,19 +30,17 @@ const UpdateUsersPage = () => {
                 return;
             }
 
-            console.log("REPONSE.STATUS",response.status);
-
             setUser(response);
         }
 
         fetchUsers();
-    }, []);
+    }, [ids, router, userService]);
 
     const onSubmit = async (data: any) => {
-        console.log(data);
-
+        setLoading(true);
         if(data.password !== data.repeatPassword) {
             setError("As senhas não coincidem");
+            setLoading(false);
             return;
         }
 
@@ -62,13 +61,15 @@ const UpdateUsersPage = () => {
             return;
         }
 
+        setLoading(false);
+
         router.push('/dashboard/users');
     }
 
 
     return (
         <div className="mb-10">
-            {user.login ? <UserForm userData={user} error={error} onSubmit={onSubmit}/> : <div>Carregando...</div> }
+            {user.login ? <UserForm loading={loading} userData={user} error={error} onSubmit={onSubmit}/> : <div>Carregando...</div> }
         </div>
     );
 

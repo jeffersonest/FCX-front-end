@@ -22,6 +22,24 @@ html, body {
 
 .table-container {
     box-sizing: content-box;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     width: 100%;
     max-width: calc(100% - 250px);
+}
+
+.MuiDataGrid-toolbarContainer {
+    padding: 0 1.25rem 0 1.25rem !important;
+    button {
+        background: #ff1654;
+        color: #fff;
+        min-height: 40px;
+        width: 130px;
+
+        &:hover {
+            background: #ab153d;
+            color: #fff;
+        }
+    }
 }
